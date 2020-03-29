@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.mapper.TTopicMapper">
+  <resultMap id="BaseResultMap" type="com.zx.domain.TTopic">
+    <!--@mbg.generated-->
+    <!--@Table t_topic-->
+    <id column="topicid" property="topicid" />
+    <result column="title" property="title" />
+    <result column="content" property="content" />
+    <result column="author" property="author" />
+    <result column="createdate" property="createdate" />
+    <result column="clickamount" property="clickamount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    topicid, title, content, author, createdate, clickamount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_topic
+    where topicid = #{topicid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_topic
+    where topicid = #{topicid}
+  </delete>
+  <insert id="insert" keyColumn="topicid" keyProperty="topicid" parameterType="com.zx.domain.TTopic" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_topic (title, content, author, createdate, clickamount)
+    values (#{title}, #{content}, #{author}, #{createdate}, #{clickamount})
+  </insert>
+  <insert id="insertSelective" keyColumn="topicid" keyProperty="topicid" parameterType="com.zx.domain.TTopic" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_topic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="clickamount != null">
+        clickamount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="author != null">
+        #{author},
+      </if>
+      <if test="createdate != null">
+        #{createdate},
+      </if>
+      <if test="clickamount != null">
+        #{clickamount},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zx.domain.TTopic">
+    <!--@mbg.generated-->
+    update t_topic
+    <set>
+      <if test="title != null">
+        title = #{title},
+      </if>
+      <if test="content != null">
+        content = #{content},
+      </if>
+      <if test="author != null">
+        author = #{author},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate},
+      </if>
+      <if test="clickamount != null">
+        clickamount = #{clickamount},
+      </if>
+    </set>
+    where topicid = #{topicid}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zx.domain.TTopic">
+    <!--@mbg.generated-->
+    update t_topic
+    set title = #{title},
+      content = #{content},
+      author = #{author},
+      createdate = #{createdate},
+      clickamount = #{clickamount}
+    where topicid = #{topicid}
+  </update>
+</mapper>

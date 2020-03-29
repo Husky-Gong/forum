@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.mapper.TReplyMapper">
+  <resultMap id="BaseResultMap" type="com.zx.domain.TReply">
+    <!--@mbg.generated-->
+    <!--@Table t_reply-->
+    <id column="replyid" property="replyid" />
+    <result column="topicid" property="topicid" />
+    <result column="author" property="author" />
+    <result column="content" property="content" />
+    <result column="createdate" property="createdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    replyid, topicid, author, content, createdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_reply
+    where replyid = #{replyid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_reply
+    where replyid = #{replyid}
+  </delete>
+  <insert id="insert" keyColumn="replyid" keyProperty="replyid" parameterType="com.zx.domain.TReply" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_reply (topicid, author, content, createdate)
+    values (#{topicid}, #{author}, #{content}, #{createdate})
+  </insert>
+  <insert id="insertSelective" keyColumn="replyid" keyProperty="replyid" parameterType="com.zx.domain.TReply" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="topicid != null">
+        topicid,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="topicid != null">
+        #{topicid},
+      </if>
+      <if test="author != null">
+        #{author},
+      </if>
+      <if test="content != null">
+        #{content},
+      </if>
+      <if test="createdate != null">
+        #{createdate},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zx.domain.TReply">
+    <!--@mbg.generated-->
+    update t_reply
+    <set>
+      <if test="topicid != null">
+        topicid = #{topicid},
+      </if>
+      <if test="author != null">
+        author = #{author},
+      </if>
+      <if test="content != null">
+        content = #{content},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate},
+      </if>
+    </set>
+    where replyid = #{replyid}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zx.domain.TReply">
+    <!--@mbg.generated-->
+    update t_reply
+    set topicid = #{topicid},
+      author = #{author},
+      content = #{content},
+      createdate = #{createdate}
+    where replyid = #{replyid}
+  </update>
+</mapper>
